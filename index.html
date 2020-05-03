@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myVue</title>
+</head>
+<body>
+    <div id="app" abc>
+        <div>msg:{{msg}}</div>          <br><br>
+        <div>num:{{num}}</div>          <br><br>
+        <div>{{person.name}}</div>      <br><br>
+        <div v-text="person.sex"></div> <br><br>
+        <button @click="handleClick">绑定了handleClick函数,点击能实例数据变化</button>
+        <br><br>
+        <div>
+            <input v-model="model" type="text"><br>
+            {{model}}
+        </div>
+    </div>
+    <script src="./myVue.js"></script>
+    <script src="./compiler.js"></script>
+    <script src="./observe.js"></script>
+    <script src="./wacther.js"></script>
+    <script>
+        let vm = new MyVue({
+            el:"#app",
+            data:{
+                msg:"我是mes的内容",
+                num:1,
+                person:{
+                    name:"wbs",
+                    age:20,
+                    sex:"man"
+                },
+                model:"我是v-model的数据"
+            },
+            methods:{
+                handleClick(){
+                    this.msg = "我是变化后的msg"
+                    this.num++
+                    this.person.name="我是变化后的wbs"
+                    this.person.age="我是变化后的age"
+                    this.person.sex="我是变化后的man"
+                }
+            }
+        })
+    </script>
+</body>
+</html>
